@@ -11,7 +11,7 @@ const Location = ({ description,
   return (
     <div>
       <div className="location">
-        <img className="location--image" src={image ? image : `./images/${title}.jpg`} alt={title}></img>
+        <img className="location--image" src={image} alt={title}></img>
         <div className="location--info-container">
           <div className="location--country">
             <img
@@ -20,7 +20,7 @@ const Location = ({ description,
               alt="indicator"
             ></img>
             <h3>{location}</h3>
-            <a href={googleMapsURL} target="_blank" rel="noopener noreferrer">
+            <a href={googleMapsURL} target="_blank" rel="noopener noreferrer text/css">
               View on Google Maps
             </a>
           </div>

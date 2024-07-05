@@ -1,35 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Navbar from './components/Navbar';
+import Location from './components/Location';
+import data from './data';
+
+
+// description: 'The Geiranger Fjord is a fjord in the Sunnmøre region of Møre og Romsdal county, Norway. It is located entirely in the Stranda Municipality.';
+// endDate: '18 Nov, 2021';
+// googleMapsUrl: 'https://goo.gl/maps/ukAQmmJoJSPqPqP16';
+// imageUrl: 'https://source.unsplash.com/3PeSjpLVtLg';
+// location: 'Norway';
+// startDate: '01 Oct, 2021';
+// title: 'Geirangerfjord';
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  // here we are mapping the data from data.js
+  const location = data.map((item, id) => {
+    console.log(item)
+    return <Location 
+    key={id} 
+    description={item.description}
+    googleMapsURL={item.googleMapsUrl}
+    image={item.imageUrl}
+    location={item.location}
+    startDate={item.startDate}
+    endDate={item.endDate}
+    title={item.title} />;
+  });
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="App">
+      <Navbar />
+      <section className="location-list">{location}</section>
+    </div>
+  );
 }
 
-export default App
+export default App;
